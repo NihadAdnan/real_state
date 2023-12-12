@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from "../utils/error.js";
-import jwt from "jsonwebtoken"; // Correct import statement
+import jwt from "jsonwebtoken"; 
 
 export const signup = async (req, res, next) => {
     const { username, email, password } = req.body;
@@ -25,7 +25,7 @@ export const signin = async (req, res, next) => {
         if (!validPassword) return next(errorHandler(401, 'Wrong Credentials'));
 
         const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, {
-            expiresIn: '1h', // Set the token expiration time
+            expiresIn: '1h', 
         });
         const {password:pass,...rest} = validUser._doc;
 
